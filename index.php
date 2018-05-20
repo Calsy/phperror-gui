@@ -15,11 +15,11 @@
 /**
  * @var string|null Path to error log file or null to get from ini settings
  */
-$error_log = null;
+$error_log = 'error_log';
 /**
  * @var string|null Path to log cache - must be writable - null for no cache
  */
-$cache     = null;
+$cache = null;
 /**
  * @var array Array of log lines
  */
@@ -293,7 +293,7 @@ $host = (function_exists('gethostname')
                     <?php if (!empty($log->path)): ?>
                         <?php echo htmlentities($log->path); ?>, line <?php echo $log->line; ?><br />
                     <?php endif; ?>
-                    last seen <?php echo date_format(date_create("@{$log->last}"), 'Y-m-d G:ia'); ?>, <?php echo $log->hits; ?> hit<?php echo($log->hits == 1 ? '' : 's'); ?><br />
+                    <br/><?php echo date_format(date_create("@{$log->last}"), 'l d/m/Y h:ia'); ?>, <?php echo $log->hits; ?> hit<?php echo($log->hits == 1 ? '' : 's'); ?><br />
                 </p>
                 <?php if (!empty($log->trace)): ?>
                     <?php $uid = uniqid('tbq'); ?>
